@@ -1,12 +1,18 @@
+## 仓库
+原仓库vgbire/react-keep-alive，在这个基础上进行更改
+修改项目
+- name 可以是 string 和 func，以适应动态label
+
+
 ## 安装
 
 ```js
 // npm
-npm i @vgbire/react-keep-alive -S
+npm i @weiwenbi/react-keep-alive -S
 // pnpm
-pnpm i @vgbire/react-keep-alive -S
+pnpm i @weiwenbi/react-keep-alive -S
 // yarn
-yarn add @vgbire/react-keep-alive
+yarn add @weiwenbi/react-keep-alive
 ```
 
 ## Demo

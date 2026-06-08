@@ -99,10 +99,9 @@ export const RouterKeepAlive: FC<RouterKeepAliveProps> = ({
 
     dispatchActivateds();
 
-    const label = currentHandle?.[nameKey];
+    const label = typeof currentHandle?.[nameKey] === 'function' ? currentHandle?.[nameKey](loaderData) : currentHandle?.[nameKey];
     const existTab = tabs.find((item) => item.key === key);
     if (!existTab && label) {
-      const finalLabel = typeof label === 'function' ? label(loaderData) : label;
       setTabs([
         ...tabs,
         {
