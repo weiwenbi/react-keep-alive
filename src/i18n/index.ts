@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 
 const getLanguage = () => {
-  const lng = navigator?.language || 'zh_CN';
+  const lng = i18n.resolvedLanguage || 'en_US';
   if (lng.includes('zh')) {
     return 'zh_CN';
   }
