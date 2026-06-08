@@ -1,5 +1,5 @@
 {
-  "name": "@vgbire/react-keep-alive",
+  "name": "@weiwenbi/react-keep-alive",
   "version": "2.2.5",
   "description": "React keepAlive",
   "keywords": [
@@ -11,15 +11,15 @@
   ],
   "license": "MIT",
   "authors": {
-    "name": "Vgbire",
-    "email": "1053254202@qq.com"
+    "name": "wwb",
+    "email": "1171832956@qq.com"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "homepage": "https://github.com/Vgbire/react-keep-alive",
-  "repository": "https://github.com/Vgbire/react-keep-alive",
-  "bugs": "https://github.com/Vgbire/react-keep-alive/issues",
+  "homepage": "https://github.com/weiwenbi/react-keep-alive",
+  "repository": "https://github.com/weiwenbi/react-keep-alive",
+  "bugs": "https://github.com/weiwenbi/react-keep-alive/issues",
   "files": [
     "dist",
     "lib",
