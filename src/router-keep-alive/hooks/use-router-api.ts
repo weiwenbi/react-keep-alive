@@ -22,10 +22,14 @@ export const useRouterApi = () => {
     if (index !== -1 && tabs.length > 1) {
       // 关闭缓存同时要清除生命周期
       clearLifeCycle(tabKey);
-      tabs.splice(index, 1);
-      setTabs([...tabs]);
+
+      const newTabs = [...tabs];
+      newTabs.splice(index, 1);
+      setTabs(newTabs);
       if (active === tabKey) {
-        navigator(tabs[0].key);
+        // 优先跳转到前一个tab，如果前一个不存在则跳转到第一个
+        const targetIndex = Math.max(0, index - 1);
+        navigator(newTabs[targetIndex].key);
       }
     }
   };
