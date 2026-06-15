@@ -213,5 +213,5 @@ npm run build
 // 构建后运行example调试
 npm run start -w example
 // 发布
-npm publish
+npm publish --access public
 ```

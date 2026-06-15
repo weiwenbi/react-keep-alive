@@ -15,6 +15,7 @@ interface RouterKeepAliveContext {
   setActive?: (active: string) => void;
   tabs?: TabsItem[];
   setTabs?: (tabs: TabsItem[]) => void;
+  defaultTabs?: TabsItem[];
   caches?: CachesItem[];
   setCaches?: (caches: CachesItem[]) => void;
   nameKey?: string;
@@ -36,6 +37,7 @@ interface RouterKeepAliveProps {
   size?: 'small' | 'middle' | 'large';
   max?: number;
   custom?: boolean;
+  defaultTabs?: TabsItem[];
   bodyStyles?: {
     wrapper?: CSSProperties;
     content?: CSSProperties;
@@ -49,6 +51,7 @@ export const RouterKeepAlive: FC<RouterKeepAliveProps> = ({
   theme = 'light',
   size = 'middle',
   max = 10,
+  defaultTabs = [],
   custom,
   bodyStyles,
   children,
@@ -62,7 +65,7 @@ export const RouterKeepAlive: FC<RouterKeepAliveProps> = ({
   const [activateds, setActivateds] = useState({});
   const [deactivateds, setDeactivateds] = useState({});
   const [active, setActive] = useState('');
-  const [tabs, setTabs] = useState<TabsItem[]>([]);
+  const [tabs, setTabs] = useState<TabsItem[]>(defaultTabs);
   const [caches, setCaches] = useState<CachesItem[]>([]);
 
   const dispatchActivateds = () => {
