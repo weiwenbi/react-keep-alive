@@ -68,6 +68,18 @@ export const RouterKeepAlive: FC<RouterKeepAliveProps> = ({
   const [tabs, setTabs] = useState<TabsItem[]>(defaultTabs);
   const [caches, setCaches] = useState<CachesItem[]>([]);
 
+  useEffect(() => {
+    setTabs(prevTabs => {
+      // 以当前 tabs 的 key 为基准去重
+      const prevKeys = new Set(prevTabs.map(t => t.key))
+      // 只追加 defaultTabs 中不存在的项
+      return [
+        ...prevTabs,
+        ...defaultTabs.filter(item => !prevKeys.has(item.key)),
+      ]
+    })
+  }, [defaultTabs]);
+
   const dispatchActivateds = () => {
     const key = mode === 'path' ? pathname : pathname + search;
 
