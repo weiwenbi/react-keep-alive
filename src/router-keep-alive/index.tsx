@@ -1,4 +1,14 @@
-import React, { useContext, useState, createContext, ReactNode, useEffect, FC, CSSProperties } from 'react';
+import React, {
+  useContext,
+  useState,
+  createContext,
+  ReactNode,
+  useEffect,
+  FC,
+  CSSProperties,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 import { useLocation, useMatches } from 'react-router';
 import { TabsItem, CachesItem, LifeCircle } from '../types';
 import { RouterTabs } from './router-tabs';
@@ -14,7 +24,7 @@ interface RouterKeepAliveContext {
   active?: string;
   setActive?: (active: string) => void;
   tabs?: TabsItem[];
-  setTabs?: (tabs: TabsItem[]) => void;
+  setTabs?: Dispatch<SetStateAction<TabsItem[]>>;
   defaultTabs?: TabsItem[];
   caches?: CachesItem[];
   setCaches?: (caches: CachesItem[]) => void;
@@ -23,6 +33,7 @@ interface RouterKeepAliveContext {
   theme?: 'light' | 'dark';
   size?: 'small' | 'middle' | 'large';
   max?: number;
+  mode?: 'path' | 'search';
 }
 
 const RouterKeepAliveContext = createContext<RouterKeepAliveContext>({ activateds: {}, deactivateds: {} });
@@ -149,6 +160,7 @@ export const RouterKeepAlive: FC<RouterKeepAliveProps> = ({
         theme,
         size,
         max,
+        mode,
       }}
     >
       {custom ? (

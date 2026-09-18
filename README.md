@@ -188,6 +188,21 @@ useRouterEffect 用法同 [useKeepAliveEffect](#keepalive-生命周期函数)
 
 ### RouterKeepAlive 其他 API
 
+`useRouteTab` 用于修改当前路由对应 tab 的标题。`setTitle` 默认更新当前 tab，也可以通过第二个参数指定其他 tab 的 key。
+
+```js
+import { useRouteTab } from '@vgbire/react-keep-alive';
+
+const { setTitle } = useRouteTab();
+
+useEffect(() => {
+  setTitle(userName);
+}, [userName, setTitle]);
+
+// 指定其他 tab
+const renameUserTab = () => setTitle('用户详情', '/user/1');
+```
+
 - close 方法用于关闭当前标签页
 - closeAll 用于关闭除了当前激活的 tab 所有的标签页
 - closeNavigator 是为了解决比如表单创建页，创建完之后需要跳转到其他路由。closeNavigator 会关闭当前创建页标签，然后跳转到指定路由。是 close()和 navigator(url)的语法糖。
