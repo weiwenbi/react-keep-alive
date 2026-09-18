@@ -13,6 +13,7 @@ import { useLocation, useMatches } from 'react-router';
 import { TabsItem, CachesItem, LifeCircle } from '../types';
 import { RouterTabs } from './router-tabs';
 import { RouterCache } from './router-cache';
+import { hasCustomizedTitle } from './route-tab-title';
 
 type LifeCircles = { [key: string]: Array<LifeCircle> };
 
@@ -136,7 +137,7 @@ export const RouterKeepAlive: FC<RouterKeepAliveProps> = ({
         },
       ]);
     }
-    if (existTab && existTab.label !== label) {
+    if (existTab && !hasCustomizedTitle(existTab) && existTab.label !== label) {
       existTab.label = label;
       setTabs([...tabs]);
     }
