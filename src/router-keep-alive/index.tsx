@@ -80,15 +80,15 @@ export const RouterKeepAlive: FC<RouterKeepAliveProps> = ({
   const [caches, setCaches] = useState<CachesItem[]>([]);
 
   useEffect(() => {
-    setTabs(prevTabs => {
+    setTabs((prevTabs) => {
       // 以当前 tabs 的 key 为基准去重
-      const prevKeys = new Set(prevTabs.map(t => t.key))
+      const prevKeys = new Set(prevTabs.map((tab) => tab.key));
       // 只追加 defaultTabs 中不存在的项
-      return [
-        ...prevTabs,
-        ...defaultTabs.filter(item => !prevKeys.has(item.key)),
-      ]
-    })
+      const newTabs = defaultTabs.filter((item) => !prevKeys.has(item.key));
+
+      // 没有实际变化时保留原引用，避免 defaultTabs 引用变化造成循环更新
+      return newTabs.length ? [...prevTabs, ...newTabs] : prevTabs;
+    });
   }, [defaultTabs]);
 
   const dispatchActivateds = () => {
